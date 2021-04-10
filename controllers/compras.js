@@ -11,7 +11,7 @@ const controller ={
         } else {
             const id=data.id;
             const conection= await pg.connect();
-            await conection.query("SELECT * FROM compras WHERE usuario=$1",[id])
+            conection.query("SELECT * FROM compras WHERE usuario=$1",[id])
             .then((data)=>{
              res.json({status:true});
             })
@@ -29,7 +29,7 @@ const controller ={
         } else {
             const id=data.id;
             const conection= await pg.connect();
-            await conection.query("INSERT INTO compras (nombre, articulos, usuario) values($1,$2,$3)",[nombre, articulos, id])
+            conection.query("INSERT INTO compras (nombre, articulos, usuario) values($1,$2,$3)",[nombre, articulos, id])
             .then((data)=>{
              res.json({status:true});
             })
