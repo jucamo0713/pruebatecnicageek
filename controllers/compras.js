@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
 const controller ={
- trae: async()=>{
+ trae: async(req,res)=>{
     const {token}=req.params;
     jwt.verify(token, process.env.JSPASS, async (err, data) => {
         if (err) {
@@ -21,7 +21,7 @@ const controller ={
         }
     });
  },
- inserta: async()=>{
+ inserta: async(req,res)=>{
     const {nombre, articulos, token}=req.body;
     jwt.verify(token, process.env.JSPASS, async (err, data) => {
         if (err) {
