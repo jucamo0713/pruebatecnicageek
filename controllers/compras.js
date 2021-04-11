@@ -13,7 +13,7 @@ const controller ={
             const conection= await pg.connect();
             conection.query("SELECT * FROM compras WHERE usuario=$1",[id])
             .then((data)=>{
-             res.json({status:true, ...data});
+             res.json({status:true, ...(data.rows)});
             })
             .catch((err)=>{
                 res.json({status:false, err});
